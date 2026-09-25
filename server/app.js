@@ -13,9 +13,13 @@ import cookieParser from 'cookie-parser'
 //Importa modulos para manejar logs
 //❌var logger = require('morgan');
 import logger from 'morgan'
+//importando biblioteca de debug
+import createDebug from "debug" //👈
 //Imports para crear dirname
 import { fileURLToPath } from 'node:url'
 import { dirname } from 'node:path'
+//Creacion del objeto debug
+const debug = createDebug('dwssr-2026:server') //👈
 //Creando las variables
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -26,6 +30,9 @@ import indexRouter from './routes/index.js'
 //var usersRouter = require('./routes/users');
 import usersRouter from './routes/users.js'
 
+
+//Crear la aplicacion express
+debug("🔨  Creando backend")
 //Crea la aplicacion express
 const app = express();
 
@@ -40,9 +47,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //Configura la carpeta de archivos estaticos
+debug("🔨  Creando servidor de archivos estaticos")
 app.use(express.static(path.join(__dirname, '..','public')));
 
 //Registramos rutas de la aplicacion
+debug("📁  Registrando rutas")
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
