@@ -1,41 +1,46 @@
-//Importando configurador de Vite
-import {defineConfig} from 'vite';
-//Importando un admin de rutas
-import { resolve } from 'node:path';
+//importando el condigurador de vite
+import {defineConfig} from "vite"
 
-//Imports para crear dirname
-import { fileURLToPath } from 'node:url'
-import { dirname } from 'node:path'
+//
+import tailwindcss from '@tailwindcss/vite'
 
-//Creando la variable de rutas
+//imports para crear Dirname
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+//creando las variables de rutas
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
+//importando el administrador de rutas de node
+import {resolve} from "node:path"
+
 export default defineConfig({
-    //Director de Raiz de los archivos fuente del front-end
-    root: 'src',
-    //Configurar un servidor de desarrollo
+    //directorio raiz de los archivos fuente del front-end
+    root: "src",
+    //configurando un servidor de desarrollo
+    //agregando a vite pliging de tailwindcss
+    plugins: [tailwindcss()],
     server: {
-        //Puerto de escucha
+        //pueto de listening
         port: 5173,
         //Rigidez del puerto
-        strict: true,
+        strict: true
     },
-    //Configurando el Build
-    build:{
+    //configurando el build
+    build: {
         //Directorio de salida del js para produccion
         outDir: "../dist",
-        //Asegurando limpieza del folder de produccion
+        //asegurando limpieza del folder de produccion
         emptyOutDir: true,
-        //Generar manifiesto para el servidor
+        //generar manifiesto para el servidor
         manifest: true,
-        //Opciones de empaquetado
+        //opciones de empaquetado
         rollupOptions: {
             input: {
-                main: resolve(__dirname, 'src/main.js'),
+                main: resolve(__dirname, "src/main.js"),
             }
         }
     },
-    //Configuracion para el desarrollo
+    //configuracion para el desarrollo 
     publicDir: false
 })

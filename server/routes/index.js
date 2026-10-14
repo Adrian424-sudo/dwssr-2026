@@ -7,9 +7,10 @@ const numbers = [ ]
 router.get('/', function(req, res, _next) {
   counter++;
   numbers.push(counter)
-  res.render('index', { title: 'Gerardo Alvarez',
-counter,
-numbers
+  res.render('index', { 
+    title: 'Adrian Rocha',
+    counter,
+    numbers
   });
 });
 
