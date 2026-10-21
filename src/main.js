@@ -11,4 +11,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-console.log("🎉 Vite ⚡+ EXPRESS 🚂 Working!!");
+console.log('🎉 Vite ⚡+ EXPRESS 🚂 Working!!');

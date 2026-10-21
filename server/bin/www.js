@@ -1,16 +1,16 @@
 #!/usr/bin/env node
-
+/* eslint-disable no-use-before-define, no-shadow, no-restricted-globals */
 /**
  * Module dependencies.
  */
 
-import app from '../app.js'
 //Importando debug
-import createDebug from "debug"
-import http from 'node:http'
+import createDebug from 'debug';
+import http from 'node:http';
+import app from '../app.js';
 
 //Creacion del objeto debug
-const debug = createDebug('dwssr-2026:server')
+const debug = createDebug('dwssr-2026:server');
 
 /**
  * Get port from environment and store in Express.
@@ -62,9 +62,10 @@ function onError(error) {
     throw error;
   }
 
-  const bind = typeof port === 'string'
-    ? `Pipe ${port}`//'Pipe ' + port
-    : `Port ${port}`//'Port ' + port;
+  const bind =
+    typeof port === 'string'
+      ? `Pipe ${port}` //'Pipe ' + port
+      : `Port ${port}`; //'Port ' + port;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -87,8 +88,6 @@ function onError(error) {
 
 function onListening() {
   const addr = server.address();
-  const bind = typeof addr === 'string'
-    ? `pipe   ${addr}`
-    : `port   ${addr.port}`;
+  const bind = typeof addr === 'string' ? `pipe   ${addr}` : `port   ${addr.port}`;
   debug(`💻  Listening on ${bind}`);
 }
