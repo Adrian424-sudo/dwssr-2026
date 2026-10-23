@@ -3,6 +3,9 @@ import fs from 'node:fs';
 // Biblioteca de rutas
 import path, { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import createDebug from 'debug';
+
+const debug = createDebug('dwssr-2026:vite');
 
 // Creando la variable de rutas
 const __filename = fileURLToPath(import.meta.url);
@@ -35,7 +38,7 @@ export function viteAssets() {
 
   // Si no existe el manifest
   if (!fs.existsSync(manifestPath)) {
-    console.warn("Vite manifest not found. Run 'npm run build' to generate it.");
+    debug("Vite manifest not found. Run 'npm run build' to generate it.");
     return '';
   }
   // Leyendo y parseando a JSON el archivo
@@ -45,7 +48,7 @@ export function viteAssets() {
   const mainEntry = manifest['main.js'];
   // Guardar Main.js
   if (!mainEntry) {
-    console.warn('Archivo main.js no esta disponible en el manifiesto de Vite');
+    debug('Archivo main.js no esta disponible en el manifiesto de Vite');
     return '';
   }
 

@@ -14,7 +14,7 @@ import cookieParser from 'cookie-parser';
 // ❌var logger = require('morgan');
 import logger from 'morgan';
 // importando biblioteca de debug
-import createDebug from 'debug'; // 👈
+import createDebug from 'debug';
 // Imports para crear dirname
 import { fileURLToPath } from 'node:url';
 
@@ -23,14 +23,14 @@ import hbs from 'hbs';
 
 // Importan las rutas de la aplicacion
 // var indexRouter = require('./routes/index');
-import indexRouter from '#routes/index.js';
+import indexRouter from '#routes/index.js'; // eslint-disable-line import-x/no-rename-default
 // var usersRouter = require('./routes/users');
-import usersRouter from '#routes/users.js';
+import usersRouter from '#routes/users.js'; // eslint-disable-line import-x/no-rename-default
 // Importando el registrador del Helper
 import { registerViteHelper } from './lib/vite.js';
 
 // Creacion del objeto debug
-const debug = createDebug('dwssr-2026:server'); // 👈
+const debug = createDebug('dwssr-2026:server');
 // Creando las variables
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

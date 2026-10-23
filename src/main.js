@@ -6,9 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const btn = document.querySelector('button');
   if (btn) {
     btn.addEventListener('click', () => {
+      // eslint-disable-next-line no-console
       console.log('Botón presionado');
     });
   }
 });
-
+// eslint-disable-next-line no-console
 console.log('🎉 Vite ⚡+ EXPRESS 🚂 Working!!');
