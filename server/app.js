@@ -12,7 +12,7 @@ import path, { dirname } from 'node:path';
 import cookieParser from 'cookie-parser';
 // Importa modulos para manejar logs
 // ❌var logger = require('morgan');
-import logger from 'morgan';
+import morgan from 'morgan';
 // importando biblioteca de debug
 import createDebug from 'debug';
 // Imports para crear dirname
@@ -47,7 +47,7 @@ app.set('view engine', 'hbs');
 registerViteHelper(hbs);
 
 // Configura middlewares de la aplicacion
-app.use(logger('dev'));
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

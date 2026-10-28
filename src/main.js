@@ -12,4 +12,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 // eslint-disable-next-line no-console
-console.log('🎉 Vite ⚡+ EXPRESS 🚂 Working!!');
+console.warn('🎉 Vite ⚡+ EXPRESS 🚂 Working!!');
