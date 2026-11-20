@@ -21,7 +21,7 @@ import { fileURLToPath } from 'node:url';
 
 
 // Importan las rutas de la aplicacion
-import homeRouter from '#routes/index.js'; // eslint-disable-line import-x/no-rename-default
+import{ HomeRouter, diagRouter } from '#routes/index.js'
 import usersRouter from '#routes/users.js'; // eslint-disable-line import-x/no-rename-default
 //importando la funcion de configuracion de Hbs
 import configureHandlebars from './lib/handlebars.js';
@@ -58,7 +58,11 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Registramos rutas de la aplicacion
 logger.info('🛣️ Registrando rutas');
-app.use('/', homeRouter);
+app.use('/', HomeRouter);
+// Se enruta solo si estamos en modo de desarrollo
+if(process.env.NODE_ENV !== 'production'){
+app.use('/', diagRouter);
+}
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
